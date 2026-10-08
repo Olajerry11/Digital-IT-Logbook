@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Daily Training Records</title>
+    <!-- Links to your CSS file -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Daily Training Records</h1>
+    
+    <form action="/submit" method="POST">
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" required>
+
+        <label for="activity">Today's Activity:</label>
+        <textarea id="activity" name="activity" rows="4" required></textarea>
+
+        <label for="comment">Student's comments:</label>
+        <textarea id="comment" name="comment" rows="4"></textarea>
+
+        <button type="submit">Save Entry</button>
+    </form>
+
+    <a href="/logs" class="secondary-btn">View Past Entries</a>
+</body>
+</html>

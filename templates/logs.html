@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Logbook Entries</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Past Entries</h1>
+    
+    <div class="log-container">
+        <ul>
+            {% for entry in entries %}
+                <li>
+                    <strong>{{ entry.date }}:</strong> {{ entry.activity }} 
+                    <br>
+                    <em>Comment: {{ entry.comment }}</em>
+                    
+                    <!-- Added Delete Button Here -->
+                    <br><br>
+                    <a href="/delete/{{ entry.id }}" class="delete-btn">Delete Entry</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <a href="/" class="secondary-btn">Add a new entry</a>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
