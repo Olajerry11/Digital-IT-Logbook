@@ -1,114 +1,211 @@
+:root {
+    --bg-main: #121212; 
+    --bg-container: #1c1c24; 
+    --text-light: #e0e0e0;
+    --accent-gold: #d4af37; 
+    --accent-purple: #5e17eb; 
+    --input-bg: #2a2a35;
+}
+
 body {
+    background-color: var(--bg-main);
+    color: var(--text-light);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4f7f6;
-    color: #000000;
     margin: 0;
-    padding: 40px;
+    padding: 30px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-height: 100vh;
 }
 
 h1 {
-    color: #0056b3;
-    margin-bottom: 30px;
+    color: var(--accent-gold);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    margin-bottom: 25px;
 }
 
 form, .log-container {
-    background-color: #ffffff;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    background-color: var(--bg-container);
+    padding: 35px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
     width: 100%;
-    max-width: 500px;
+    max-width: 550px;
+    margin-bottom: 25px;
+    border-top: 4px solid var(--accent-purple);
+    box-sizing: border-box;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 14px;
+    margin: 8px 0 20px 0;
+    border: 1px solid #333;
+    border-radius: 8px;
+    background-color: var(--input-bg);
+    color: white;
+    font-size: 15px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--accent-gold);
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
 }
 
 label {
     font-weight: bold;
-    margin-top: 15px;
-    display: block;
-    color: #000000;
+    color: #aaa;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-input[type="date"], textarea {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    border: 2px solid #000000;
-    border-radius: 5px;
-    box-sizing: border-box;
-    font-family: inherit;
-}
-
-button {
-    background-color: #0056b3;
+button, .secondary-btn, .edit-btn, .delete-btn, .clear-btn {
+    background: linear-gradient(135deg, var(--accent-purple), #3B0998);
     color: white;
+    padding: 12px 24px;
     border: none;
-    padding: 12px 20px;
-    margin-top: 20px;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
-    font-size: 16px;
+    text-decoration: none;
+    display: inline-block;
     font-weight: bold;
-    width: 100%;
-    transition: background-color 0.3s ease, transform 0.1s ease;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-button:hover {
-    background-color: #004494;
+button:hover, .secondary-btn:hover {
     transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(94, 23, 235, 0.4);
 }
 
-button:active {
-    transform: translateY(0);
+.button-group {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    width: 100%;
+    max-width: 550px;
+}
+
+.delete-btn {
+    background: #8b0000;
+}
+.delete-btn:hover {
+    background: #ff3333;
+    box-shadow: 0 6px 15px rgba(255, 51, 51, 0.4);
+}
+
+.edit-btn {
+    background: #333;
+    border: 1px solid var(--accent-gold);
+    color: var(--accent-gold);
+}
+.edit-btn:hover {
+    background: var(--accent-gold);
+    color: #121212;
 }
 
 ul {
     list-style-type: none;
     padding: 0;
+    margin: 0;
 }
 
 li {
-    background: #fdfdfd;
-    border-left: 5px solid #0056b3;
-    margin-bottom: 15px;
-    padding: 15px;
-    border-radius: 4px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    background-color: #252530;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    border-left: 5px solid var(--accent-gold);
 }
 
-.secondary-btn {
-    background-color: #000000;
-    color: #ffffff;
-    text-decoration: none;
+.log-container li {
+    opacity: 0; 
+    transform: translateY(20px); 
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.log-container li:hover {
+    transform: scale(1.02) translateY(0) !important;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+}
+
+strong {
+    color: var(--accent-gold);
+    font-size: 1.1em;
+}
+
+em {
+    color: #aaa;
+    display: block;
+    margin-top: 10px;
+}
+
+.animate-in {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+/* Password Eye Icon Styling */
+.password-container {
+    position: relative;
+    width: 100%;
+    margin: 8px 0 20px 0;
+}
+.password-container input {
+    margin: 0;
+    padding-right: 45px; 
+}
+.toggle-password {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #aaa;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+.toggle-password:hover {
+    opacity: 1;
+    color: var(--accent-gold);
+}
+
+/* Live Password Requirements Styling */
+.password-reqs {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+    font-size: 13px;
+    color: #aaa;
+}
+.password-reqs li {
+    margin-bottom: 5px;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    background: transparent;
+    padding: 0;
+    border: none;
+}
+.password-reqs li::before {
+    content: '✗';
+    margin-right: 8px;
+    color: #ff3333; 
     font-weight: bold;
     display: inline-block;
-    margin-top: 30px;
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-align: center;
-    transition: background-color 0.3s ease, transform 0.1s ease;
+    width: 15px;
 }
-
-.secondary-btn:hover {
-    background-color: #333333;
-    transform: translateY(-2px);
-    text-decoration: none;
+.password-reqs li.valid {
+    color: var(--accent-gold);
 }
-
-/* Added styling for the delete button */
-.delete-btn {
-    background-color: #dc3545;
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 14px;
-    padding: 6px 12px;
-    border-radius: 4px;
-    display: inline-block;
-    transition: background-color 0.3s ease;
-}
-
-.delete-btn:hover {
-    background-color: #a71d2a;
-    color: #ffffff;
+.password-reqs li.valid::before {
+    content: '✓';
+    color: var(--accent-gold); 
 }

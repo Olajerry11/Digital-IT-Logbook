@@ -1,26 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Daily Training Records</title>
-    <!-- Links to your CSS file -->
+    <title>Digital Logbook - New Entry</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    
+    <!-- Flatpickr Dark Theme CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/dark.css">
 </head>
 <body>
-    <h1>Daily Training Records</h1>
+    <h1>Add New Entry</h1>
     
     <form action="/submit" method="POST">
         <label for="date">Date:</label>
-        <input type="date" id="date" name="date" required>
-
-        <label for="activity">Today's Activity:</label>
-        <textarea id="activity" name="activity" rows="4" required></textarea>
-
-        <label for="comment">Student's comments:</label>
-        <textarea id="comment" name="comment" rows="4"></textarea>
-
+        <input type="text" id="date" name="date" placeholder="Select a date" required>
+        
+        <label for="activity">Activity:</label>
+        <textarea id="activity" name="activity" rows="4" placeholder="What did you work on today?" required></textarea>
+        
+        <label for="comment">Comment (Optional):</label>
+        <textarea id="comment" name="comment" rows="2" placeholder="Any challenges or notes?"></textarea>
+        
         <button type="submit">Save Entry</button>
     </form>
 
-    <a href="/logs" class="secondary-btn">View Past Entries</a>
+    <div class="button-group">
+        <a href="/logs" class="secondary-btn">View Past Logs</a>
+        <a href="/logout" class="secondary-btn" style="background: #333; border: 1px solid #555;">Logout</a>
+    </div>
+
+    <!-- Flatpickr JS -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

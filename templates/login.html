@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login - Digital Logbook</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Welcome Back</h1>
+    
+    <form action="/login" method="POST">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        
+        <label for="password">Password:</label>
+        <div class="password-container">
+            <input type="password" id="password" name="password" required>
+            <span class="toggle-password" title="Show/Hide Password">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+            </span>
+        </div>
+        
+        <div style="text-align: right; margin-bottom: 20px;">
+            <a href="/forgot_password" style="color: var(--accent-gold); font-size: 13px; text-decoration: none;">Forgot Password?</a>
+        </div>
+        
+        <button type="submit">Login</button>
+    </form>
+
+    <br><br>
+    <a href="/register" class="secondary-btn">Don't have an account? Register here</a>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

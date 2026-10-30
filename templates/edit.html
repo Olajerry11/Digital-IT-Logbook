@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Log Entry</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Edit Entry</h1>
+    
+    <form action="/update/{{ entry.id }}" method="POST">
+        <label for="activity">Activity:</label>
+        <input type="text" id="activity" name="activity" value="{{ entry.activity }}" required>
+        
+        <label for="comment">Comment (Optional):</label>
+        <textarea id="comment" name="comment" rows="4">{{ entry.comment }}</textarea>
+        
+        <button type="submit">Update Entry</button>
+    </form>
+
+    <a href="/logs" class="secondary-btn">Cancel and go back</a>
+</body>
+</html>

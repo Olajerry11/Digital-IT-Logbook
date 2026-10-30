@@ -7,6 +7,15 @@
 <body>
     <h1>Past Entries</h1>
     
+    <!-- Search Bar -->
+    <form action="/logs" method="GET" class="search-form">
+        <input type="text" name="query" placeholder="Search by date, keyword, or comment..." value="{{ search_query or '' }}">
+        <button type="submit">Search</button>
+        {% if search_query %}
+            <a href="/logs" class="clear-btn">Clear Search</a>
+        {% endif %}
+    </form>
+    
     <div class="log-container">
         <ul>
             {% for entry in entries %}
@@ -15,15 +24,22 @@
                     <br>
                     <em>Comment: {{ entry.comment }}</em>
                     
-                    <!-- Added Delete Button Here -->
                     <br><br>
+                    <!-- Edit and Delete Buttons -->
+                    <a href="/edit/{{ entry.id }}" class="edit-btn">Edit Entry</a>
                     <a href="/delete/{{ entry.id }}" class="delete-btn">Delete Entry</a>
                 </li>
+            {% else %}
+                <li>No entries found matching your search.</li>
             {% endfor %}
         </ul>
     </div>
 
-    <a href="/" class="secondary-btn">Add a new entry</a>
+    <div class="button-group">
+        <a href="/" class="secondary-btn">Add a new entry</a>
+        <a href="/export" class="secondary-btn">Export Logs</a>
+        <a href="/logout" class="secondary-btn">Logout</a>
+    </div>
 
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
