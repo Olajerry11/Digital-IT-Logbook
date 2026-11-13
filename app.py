@@ -43,6 +43,16 @@ class LogEntry(db.Model):
     activity = db.Column(db.Text, nullable=False)
     comment = db.Column(db.Text, nullable=True)
 
+# --- PWA CONFIGURATION ROUTES ---
+
+@app.route('/manifest.json')
+def serve_manifest():
+    return app.send_static_file('manifest.json')
+
+@app.route('/sw.js')
+def serve_sw():
+    return app.send_static_file('sw.js')
+
 # --- AUTHENTICATION & VERIFICATION ROUTES ---
 
 @app.route('/register', methods=['GET', 'POST'])
